@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧑‍💼 Rekryteringssystem – Java
 
 Ett rekryteringssystem skrivet i Java där man kan lägga till, ta bort och visa kandidater via en meny i konsolen.
@@ -37,3 +38,6 @@ och hur viktigt det är med felhantering och tester för att göra ett stabilt p
 ---
 
 🧠 Skapat av **Jonatan Dahl** – Individuell Labb 2 (Kompetenskontroll 2)
+=======
+# Inlamning2
+>>>>>>> ae59c6e32dda0a70576ae4824140e69f43696fd4
