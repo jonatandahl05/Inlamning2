@@ -74,7 +74,7 @@ public class CandidateService {
                 .toList();
     }
 
-//Skriver ut kandidater i konsolen lite snyggt, samt visar ett meddelande om listan är tom.
+
     public static void printCandidates(List<Candidate> candidates)
     {
         if (candidates.isEmpty())

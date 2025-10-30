@@ -37,7 +37,7 @@ vilket följer Single Responsibility Principle – varje klass har ett tydligt a
 vilket gör programmet lättare att underhålla och följer **Open/Closed Principle**,  
 eftersom jag kan lägga till nya sätt att spara data utan att ändra befintlig kod.  
 Dessutom används **Dependency Inversion Principle** när `CandidateService` tar emot  
-ett repository som parameter – det gör klasserna oberoende och lätta att testa.
+ett repository, det gör klasserna oberoende och lätta att testa.
 
 
 ---
