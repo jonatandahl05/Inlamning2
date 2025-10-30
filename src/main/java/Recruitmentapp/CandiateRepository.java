@@ -9,6 +9,7 @@ public class CandiateRepository {
     private int nextId = 1;
 
     public boolean addCandidate(Candidate candidate) {
+        // Stream används för att loopa igenom alla kandidater och se om en likadan redan finns
         boolean exists = candidates.values().stream()
                 .anyMatch(c ->
                         c.getName().equalsIgnoreCase(candidate.getName()) &&
@@ -47,9 +48,5 @@ public class CandiateRepository {
     {
         return candidates.isEmpty();
     }
-
-
-
-
 
 }

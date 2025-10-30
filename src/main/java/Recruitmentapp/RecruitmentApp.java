@@ -218,7 +218,6 @@ public class RecruitmentApp {
            System.out.println("En kandidat med samma namn och branch finns redan i systemet! \n");
            logger.warn("Försök att lägga till en dubblett: {} ({})", name, industry);
        }
-
    } catch (Exception e)
        {
            System.out.println("Ett oväntat fel inträffade vid tilläg av kandidat. \n");
@@ -272,6 +271,7 @@ public class RecruitmentApp {
            }
 
            boolean success = service.removeCandidate(id);
+
            if (success) {
                System.out.println("Kandidat " + candidate.getName() + " borttagen");
                logger.info("Kandidat borttagen: {} (ID: {})", candidate.getName(), candidate.getId());
@@ -333,7 +333,7 @@ public class RecruitmentApp {
        System.out.println("\n--> Kandidater i branschen: " + capitalize(selected) + " <--");
        printCandidates(filtered);
    }
-
+   // Formaterar text så första bokstaven blir stor
    private static String capitalize (String text)
    {
        if (text == null || text.isEmpty())

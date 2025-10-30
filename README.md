@@ -44,11 +44,12 @@ ett repository som parameter – det gör klasserna oberoende och lätta att tes
 
 ### 🤖 Prompt Engineering och AI-stöd
 
-Jag använde ChatGPT (GPT-5) vid några tillfällen under utvecklingen för att få hjälp att förstå vissa delar av uppgiften bättre.  
+Jag använde ChatGPT vid några tillfällen under utvecklingen för att få hjälp att förstå vissa delar av uppgiften bättre.  
 Till exempel använde jag AI-stöd när jag skulle:
 - komma på tydliga och beskrivande namn till mina JUnit-tester,
 - förstå hur Mockito fungerar för att skapa mockade objekt,
 - och få en förklaring på hur jag kunde strukturera CandidateService och CandiateRepository enligt SOLID-principer.
+- Få en fin readme fil :)
 
 Jag märkte snabbt att resultaten blev mycket bättre när jag skrev mer specifika prompts.  
 Till exempel gav “hur testar jag min Addcandidate metod i java?” ett mer användbart svar  
