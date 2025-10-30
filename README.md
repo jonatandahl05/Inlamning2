@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🧑‍💼 Rekryteringssystem – Java
 
 Ett rekryteringssystem skrivet i Java där man kan lägga till, ta bort och visa kandidater via en meny i konsolen.
