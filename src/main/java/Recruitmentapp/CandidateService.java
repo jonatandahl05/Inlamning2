@@ -35,6 +35,7 @@ public class CandidateService {
 
 // Standard kandidater så man slipper skriva in flera stycken och det blir lätt att se att programmet fungerar (chatgpt underlättade här då man inte orkar :D)
     public void loadDefaultCandidates()
+// Skyddar mot dubbletter genom att kolla om repository redan innehåller kandidater
     { if(!repository.isEmpty()) {
         System.out.println("Det finns redan kandidater i systemet. Standardkandidater laddas inte igen. \n");
         logger.warn("Försök att ladda default candidates när listan redan innehåller kandidater");
@@ -58,14 +59,14 @@ public class CandidateService {
         logger.info("Standardkandidater har lagts till");
 
     }
-
+//Filtrerar kandidater efter vald bransch
     public List<Candidate> filterByIndustry(String industry)
     {
         return repository.getAllCandidates().stream()
                 .filter(c -> c.getIndustry().equalsIgnoreCase(industry))
                 .collect(Collectors.toList());
     }
-
+//Sorterar kandidater efter antal år av erfarenhet (flest år ->)
     public List<Candidate> sortByExperience ()
     {
         return repository.getAllCandidates().stream()
@@ -73,6 +74,7 @@ public class CandidateService {
                 .toList();
     }
 
+//Skriver ut kandidater i konsolen lite snyggt, samt visar ett meddelande om listan är tom.
     public static void printCandidates(List<Candidate> candidates)
     {
         if (candidates.isEmpty())

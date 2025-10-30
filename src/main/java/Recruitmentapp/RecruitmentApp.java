@@ -19,7 +19,7 @@ public class RecruitmentApp {
 
         System.out.println("Vill du kägga till standardkandidater? (ja/nej): ");
         String answer = scanner.nextLine().trim().toLowerCase();
-
+//Ger användaren en möjlighet att börja med färdig data
         if(answer.equals("ja"))
         {
             service.loadDefaultCandidates();
@@ -30,6 +30,7 @@ public class RecruitmentApp {
 
         boolean running = true;
 
+//Huvud loopen för hela progammet
         while(running)
         {
             try {
@@ -51,8 +52,8 @@ public class RecruitmentApp {
                         logger.info("Programmet avslutades av användaren.");
                         running = false;
                         break;
-
                     default:
+                        System.out.println("Ogiltigt val, försök igen.");
                 }
             }catch (InputMismatchException e)
             {
@@ -83,7 +84,7 @@ public class RecruitmentApp {
 
         while (!back)
         {
-
+//Menyn för att hantera kandidater
             System.out.println("---> Hantera kandidater <---");
             System.out.println("1. Lägg till ny kandidat");
             System.out.println("2. Visa alla kandidater");
@@ -133,7 +134,7 @@ public class RecruitmentApp {
 
         while (!back)
         {
-
+//Menyn för att filtrera och sortera kandidater
             System.out.println("---> Sortera / Filtrera kandidater <---");
             System.out.println("1. Filtrera efter bransch");
             System.out.println("2. Filtrera efter år av erfarenhet");
@@ -177,7 +178,7 @@ public class RecruitmentApp {
         }
     }
 
-
+//lägger till en ny kandidat med validering och felhantering
    private static void addCandidate()
    {
        try {
@@ -193,14 +194,14 @@ public class RecruitmentApp {
 
        System.out.println("År av erfarenhet: ");
        int yearsOfExperience = Integer.parseInt(scanner.nextLine());
-
+// Validering av tomma fält
        if(name.isEmpty() || industry.isEmpty())
        {
            System.out.println("\n Namn och branch får inte vara tomma");
            logger.warn("Försök att lägga till kandidat med tomma fält (name: {}, industry: {})", name, industry);
            return;
        }
-
+// Validering av negativa värden
        if (age <= 0 || yearsOfExperience < 0)
        {
                System.out.println("Ålder och erfarenhet måste vara positiva siffror.\n");
@@ -225,12 +226,15 @@ public class RecruitmentApp {
        }
    }
 
+//Skriver ut alla kandidater som finns i systemet
    public static void showAllCandidates()
    {
        List<Candidate> candidates = service.getAllCandidates();
        System.out.println("---> Kandidater i systemet (" + candidates.size() + " st) <---");
        printCandidates(candidates);
    }
+
+// Tar bort en kandidat baserat på id, med bekräftelse från användaren
    private static void removeCandidate()
    {
        List<Candidate> candidates = service.getAllCandidates();
@@ -243,7 +247,6 @@ public class RecruitmentApp {
        printCandidates(candidates);
 
        try {
-
 
            System.out.println("Vänligen ange ID på kandidaten du vill ta bort");
            int id = scanner.nextInt();
@@ -258,7 +261,7 @@ public class RecruitmentApp {
            }
 
            Candidate candidate = candidateOpt.get();
-
+//Användaren måste bekräfta borrtagningen
            System.out.printf("Är du säker på att du vill ta bort %s (ID: %d)? (ja/nej): ",
                    candidate.getName(), candidate.getId());
            String confirm = scanner.nextLine().trim().toLowerCase();
@@ -284,6 +287,7 @@ public class RecruitmentApp {
 
    }
 
+// Sorterar kandidater efter erfarenhet (flest år först)
    public static void  sortByExperience()
    {
        List<Candidate> sorted = service.sortByExperience();
@@ -291,6 +295,7 @@ public class RecruitmentApp {
 
    }
 
+// Filtrerar kandidater efter bransch och visar resultatet
    private static void filterByIndustryMenu()
    {
        Set<String> indutries = service.getAllIndustries();
