@@ -13,11 +13,12 @@ Programmet har stöd för:
 - Ladda in färdiga kandidater så slipper man skriva själv
 ---
 
-### ⚙️ Kort om hur det funkar
-Koden är uppdelad i tre delar:
+## ⚙️ Kort om hur det funkar
+Programmet är uppdelat i flera klasser för att hålla det tydligt och följa SOLID-principerna:
 - **RecruitmentApp** → sköter menyer och användargränssnitt
-- **CandidateService** → logiken, filtrering och sortering
-- **CandiateRepository** → lagring och hantering av kandidater
+- **CandidateService** → innehåller logiken, filtrering och sortering
+- **CandiateRepository (och ICandidateRepository)** → lagrar och hanterar kandidater
+- **CandidateFilter + IndustryFilter** → visar hur man kan bygga vidare med Open/Closed-principen
 
 All inmatning är skyddad med `try-catch` och programmet loggar händelser med **SLF4J**.
 
@@ -30,14 +31,15 @@ Jag har även lagt till enhetstester med **JUnit 5** och **Mockito** som testar:
 
 ---
 
-### 🧩 Klassval och SOLID-principer
-Jag valde att skapa `CandidateService` för att separera logiken från användargränssnittet,  
-vilket följer Single Responsibility Principle – varje klass har ett tydligt ansvar.  
-`CandiateRepository` skapades för att hantera datalagring och operationer,  
-vilket gör programmet lättare att underhålla och följer **Open/Closed Principle**,  
-eftersom jag kan lägga till nya sätt att spara data utan att ändra befintlig kod.  
-Dessutom används **Dependency Inversion Principle** när `CandidateService` tar emot  
-ett repository, det gör klasserna oberoende och lätta att testa.
+### 🧩 Struktur & SOLID
+Jag har delat upp systemet i flera klasser för att hålla det tydligt och följa SOLID:
+- **RecruitmentApp** – sköter menyer och användargränssnitt
+- **CandidateService** – hanterar logiken
+- **CandiateRepository (och ICandidateRepository)** – sköter lagringen
+- **CandidateFilter + IndustryFilter** – visar hur man kan bygga vidare med Open/Closed-principen
+
+Service-klassen tar emot ett interface istället för en konkret klass → följer **Dependency Inversion Principle**  
+Och filterklasserna visar **Open/Closed Principle** – jag kan lägga till fler filter utan att ändra befintlig kod.
 
 
 ---

@@ -3,7 +3,7 @@ package Recruitmentapp;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CandiateRepository {
+public class CandiateRepository implements ICandidateRepository{
 
     private Map<Integer, Candidate> candidates = new HashMap<>();
     private int nextId = 1;

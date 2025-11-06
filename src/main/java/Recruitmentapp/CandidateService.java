@@ -5,11 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CandidateService {
-    private CandiateRepository repository;
+    private ICandidateRepository repository;
 
     private static final Logger logger = LoggerFactory.getLogger(CandidateService.class);
 
-    public CandidateService(CandiateRepository repository) {
+    public CandidateService(ICandidateRepository repository) {
         this.repository = repository;
     }
 
@@ -106,6 +106,13 @@ public class CandidateService {
                 .sorted(Comparator.comparing(Candidate::getYearsOfExperience).reversed())
                 .limit(topN)
                 .toList();
+    }
+
+//Tar emot ett filter och låter det göra jobbet
+// vill man lägga till fler typer av filter i framtiden behöver man inte ändra något här, bara skapa en ny filterklass.
+    public List<Candidate> applyFilter (CandidateFilter filter)
+    {
+        return filter.filter(repository.getAllCandidates());
     }
 
 
